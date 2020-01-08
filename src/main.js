@@ -2,13 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import iView from 'iview'
+import ViewUI from 'view-design'
 import {getRequest, postRequest} from '@/lib/axios'
+
+import 'iview/dist/styles/iview.css'
 //import { getRequest, postRequest, putRequest, deleteRequest, importRequest, uploadFileRequest } from '@/libs/axios'
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false
-Vue.use(iView, {
+Vue.use(ViewUI, {
   //i18n: (key, value) => i18n.t(key, value)
 });
 new Vue({

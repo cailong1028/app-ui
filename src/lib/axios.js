@@ -78,12 +78,8 @@ export const postRequest = (url, params) => {
         url: `${base}${url}`,
         data: params,
         transformRequest: [function (data,config) {
-            let ret = '';
-            for (let it in data) {
-                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&';
-            }
-            ret = ret.substring(0, ret.length - 1);
-            return ret;
+            let ret = iterator(data);
+            return ret = ret.substring(0, ret.length - 1);
         }],
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -91,6 +87,30 @@ export const postRequest = (url, params) => {
         }
     });
 };
+
+const iterator = (data, prefix) => {
+    let ret = '';
+    for (let it in data) {
+        if(data[it] === null){
+            continue;
+        }
+        if(typeof data[it] === 'object' && isNaN(data[it].length)){
+            let _prefix = encodeURIComponent(it)+'.';
+            if(prefix){
+                _prefix = prefix + _prefix
+            }
+            ret += iterator(data[it], _prefix);
+        }else{
+            let oneItem = encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&';
+            if(prefix){
+                ret += prefix + oneItem;
+            }else{
+                ret += oneItem;
+            }
+        }
+    }
+    return ret;
+}
 
 export const postFormRequest = (url, params) => {
     let accessToken = getStore("accessToken");

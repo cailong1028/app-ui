@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Index from '../views/index.vue'
+import TableTest from '../views/TableTest.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'index',
-    component: Index
+    name: 'TableTest',
+    component: TableTest
   },
   {
     path: '/home',
