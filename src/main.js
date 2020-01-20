@@ -16,7 +16,11 @@ Vue.use(ViewUI, {
 new Vue({
   router,
   store,
-  render: h => h(App)
+    data:{},
+  render: h => h(App),
+    mounted(){
+      //todo 初始化路由
+    }
 }).$mount('#app')
 
 // 挂载全局使用的方法
