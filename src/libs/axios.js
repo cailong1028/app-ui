@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getStore, setStore } from './storage';
 import { router } from '../router/index';
-import { Message } from 'iview';
+import { Message } from 'view-design';
 // 统一请求路径前缀
 let base = '/app';
 // 超时设定
